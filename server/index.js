@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const router = require('./router');
 
 const server = express();
-const port = 3004;
+const port = 3000;
 
 server.use(helmet());
 server.use(morgan('combined'));
