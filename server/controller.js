@@ -22,7 +22,7 @@ const controller = {
   },
   getProduct: (req, res) => {
     axios
-      .get('http://ec2-54-193-62-209.us-west-1.compute.amazonaws.com:3000/api/product')
+      .get('http://ec2-54-193-62-209.us-west-1.compute.amazonaws.com:3001/api/product')
       .then(result => res.status(200).send(result.data))
       .catch(err => console.error(err));
   },
