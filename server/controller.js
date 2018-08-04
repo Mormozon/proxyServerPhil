@@ -11,10 +11,13 @@ const controller = {
   },
   getAnswer: (req, res) => {
     axios
-      .get('http://localhost:3004/api/question', {
+      .get('http://localhost:3004/api/answer', {
         params: req.query
       })
-      .then(result => res.status(200).send(result.data))
+      .then(result => {
+        console.log(result.data);
+        res.status(200).send(result.data);
+      })
       .catch(err => console.error(err));
   },
   getProduct: (req, res) => {
@@ -31,19 +34,41 @@ const controller = {
   },
   loadCustomerQuestions: (req, res) => {
     axios
-      .get('http://localhost:3004/bundle.js')
+      .get('http://localhost:3004/bundle.js', {
+        'async': true,
+        'crossDomain': true,
+        'headers': {
+          'Content-Type': 'application/javascript',
+          'Cache-Control': 'no-cache',
+        }
+      })
       .then(result => res.status(200).send(result.data))
       .catch(err => console.error(err));
   },
   loadRelatedProducts: (req, res) => {
     axios
-      .get('http://localhost:1337/client/bundle.js')
+      .get('http://localhost:1337/client/bundle.js', {
+        responseType: 'text',
+        'async': true,
+        'crossDomain': true,
+        'headers': {
+          'Content-Type': 'application/javascript',
+          'Cache-Control': 'no-cache'
+        }
+      })
       .then(result => res.status(200).send(result.data))
       .catch(err => console.error(err));
   },
   loadProductDescription: (req, res) => {
     axios
-      .get('http://localhost:3001/bundle.js')
+      .get('http://localhost:3001/bundle.js', {
+        'async': true,
+        'crossDomain': true,
+        'headers': {
+          'Content-Type': 'application/javascript',
+          'Cache-Control': 'no-cache'
+        }
+      })
       .then(result => res.status(200).send(result.data))
       .catch(err => console.error(err));
   }
