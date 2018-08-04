@@ -22,19 +22,19 @@ const controller = {
   },
   getProduct: (req, res) => {
     axios
-      .get('http://localhost:3001/api/product')
+      .get('http://ec2-54-193-62-209.us-west-1.compute.amazonaws.com:3000/api/product')
       .then(result => res.status(200).send(result.data))
       .catch(err => console.error(err));
   },
   getRelated: (req, res) => {
     axios
-      .get('http://localhost:1337/api/related')
+      .get('ec2-54-183-111-248.us-west-1.compute.amazonaws.com:1337/api/related')
       .then(result => res.status(200).send(result.data))
       .catch(err => console.error(err));
   },
   loadCustomerQuestions: (req, res) => {
     axios
-      .get('http://localhost:3004/bundle.js', {
+      .get('https://s3-us-west-1.amazonaws.com/mormont-phil/bundle.js', {
         'async': true,
         'crossDomain': true,
         'headers': {
@@ -47,7 +47,7 @@ const controller = {
   },
   loadRelatedProducts: (req, res) => {
     axios
-      .get('http://localhost:1337/client/bundle.js', {
+      .get('https://s3-us-west-1.amazonaws.com/relatedproducts/relatedProducts/bundle.js', {
         responseType: 'text',
         'async': true,
         'crossDomain': true,
@@ -61,7 +61,7 @@ const controller = {
   },
   loadProductDescription: (req, res) => {
     axios
-      .get('http://localhost:3001/bundle.js', {
+      .get('https://s3-us-west-1.amazonaws.com/mormont/client/dist/bundle.js', {
         'async': true,
         'crossDomain': true,
         'headers': {
